@@ -1,0 +1,14 @@
++------------------------------------------------------------------------------------+
+|  Capture ALL IPv4 and IPv6 packets with TTL/Hop Limit ≤ 64                        |
++------------------------------------------------------------------------------------+
+| Command:                                                                           |
+| tcpdump '(ip and ip[8] <= 64) or (ip6 and ip6[7] <= 64)'                          |
+|                                                                                    |
+| Explanation:                                                                       |
+|  ip         → Ensures IPv4 packet                                                 |
+|  ip[8]      → TTL field in IPv4 header                                           |
+|  ip6        → Ensures IPv6 packet                                                |
+|  ip6[7]     → Hop Limit field in IPv6 header                                     |
+|  <= 64      → Matches packets with TTL/Hop Limit of 64 or less                   |
+|  or         → Combines IPv4 and IPv6 conditions                                  |
++------------------------------------------------------------------------------------+
