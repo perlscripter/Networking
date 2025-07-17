@@ -1,0 +1,14 @@
+tcpdump {A} [B:C] {D} {E} {F} {G}
+
+A = Protocol (ether | arp | ip | ip6 | icmp | tcp | udp)
+B = Header Byte offset
+C = optional: Byte Length. Can be 1, 2 or 4 (default 1)
+D = optional: Bitwise mask ( & )
+E = Relational operator ( = | == | > | < | <= | >= | != | () | << | >> )
+F = Result of Expression
+G = optional: Logical Operator ( && || ) to bridge expressions
+---------------------------------------------------------------------------------------
+tcpdump -i eth0 'ether[12:2] = 0x0806'
+tcpdump -i eth1 'ip[9] = 0x06'
+tcpdump -i eth0 'tcp[0:2] = 53 || tcp[2:2] = 53'
+tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
